@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
+/* Учим Tailwind слушаться нашего переключателя на сайте, а не настроек операционной системы */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-okak-orange: #FF8303;
 }
 
 :root {
-  /* Светлая тема */
-  --background: #FAFAFA;
-  --foreground: #0B0B0F;
+  /* Идеально белый фон для светлой темы */
+  --background: #FFFFFF; 
+  --foreground: #000000;
 }
 
 .dark {
-  /* Темная тема - глубокий черный, как мы обсуждали */
-  --background: #0B0B0F;
-  --foreground: #FAFAFA;
+  /* Глубокий черный фон для темной темы */
+  --background: #0B0B0F; 
+  --foreground: #FFFFFF;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  /* Плавный переход фона при смене темы */
   transition: background-color 0.3s ease, color 0.3s ease; 
 }

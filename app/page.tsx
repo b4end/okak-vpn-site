@@ -1,31 +1,186 @@
-import { ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Send, Gift, ShieldCheck } from "lucide-react";
 
 export default function Home() {
+  // Единый стандарт для широких кнопок с анимацией масштабирования и нажатия
+  const buttonBaseClass = "w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 font-medium border border-transparent cursor-pointer";
+  
+  // Единый стандарт для мини-кнопок
+  const miniButtonClass = "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all hover:scale-105 active:scale-90 cursor-pointer";
+
+  const imageIconClass = "w-5 h-5 invert dark:invert-0";
+  const miniImageIconClass = "w-6 h-6 invert dark:invert-0";
+  
+  const cardClass = "bg-gray-50 dark:bg-[#151518] p-8 md:p-10 rounded-[2rem] flex flex-col items-start text-left hover:bg-gray-100 dark:hover:bg-[#1A1A1E] transition-colors duration-300 border border-black/5 dark:border-white/5";
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <div className="max-w-md w-full text-center space-y-6">
-        
-        {/* Оранжевый как аккуратный акцент (иконка с легким свечением) */}
-        <div className="flex justify-center">
-          <div className="p-4 rounded-full bg-okak-orange/10 ring-1 ring-okak-orange/20">
-            <ShieldCheck className="w-10 h-10 text-okak-orange" />
+    <main className="flex flex-col items-center w-full overflow-hidden">
+      
+      {/* --- СЕКЦИЯ 1: Главный экран --- */}
+      <div className="flex flex-col items-center pt-6 lg:pt-10 px-6 lg:px-12 w-full max-w-7xl">
+        <div className="max-w-4xl w-full text-center flex flex-col items-center z-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] text-black dark:text-white mb-6 max-w-3xl">
+            Верните доступ к заблокированным сервисам без потери скорости.
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-10 font-medium max-w-2xl">
+            Один аккаунт для всех устройств.
+          </p>
+
+          {/* Кнопки скачивания -> /download */}
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full max-w-4xl">
+            <Link href="/download" className={buttonBaseClass}>
+              <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
+              iOS / iPadOS
+            </Link>
+            <Link href="/download" className={buttonBaseClass}>
+              <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
+              Android
+            </Link>
+            <Link href="/download" className={buttonBaseClass}>
+              <Image src="/windows-logo.svg" alt="Windows" width={20} height={20} className={imageIconClass} />
+              Windows
+            </Link>
+            <Link href="/download" className={buttonBaseClass}>
+              <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
+              macOS
+            </Link>
+            <Link href="/download" className={buttonBaseClass}>
+              <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
+              Linux
+            </Link>
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-          Okak VPN
-        </h1>
-        
-        <p className="text-gray-500 dark:text-gray-400">
-          Базовая архитектура готова. Темная тема подключена.
-        </p>
-
-        {/* Временная тестовая кнопка для проверки акцентного цвета */}
-        <button className="px-8 py-3 mt-4 rounded-full bg-okak-orange text-white font-medium hover:bg-[#e67600] transition-colors shadow-lg shadow-okak-orange/20">
-          Тестовая кнопка
-        </button>
-        
+        {/* Телефон и Кот */}
+        <div className="mt-16 w-full flex justify-center relative">
+          <div className="absolute top-10 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-okak-orange/10 dark:bg-okak-orange/5 rounded-full blur-3xl -z-10"></div>
+          <div className="w-[320px] md:w-[380px] h-[600px] bg-white dark:bg-[#111116] border-[6px] border-gray-100 dark:border-[#1C1C1E] rounded-[3rem] shadow-2xl flex flex-col items-center justify-center p-8 text-center relative overflow-hidden z-10">
+            <div className="text-4xl mb-4">🐱</div>
+            <h3 className="text-xl font-bold mb-2 text-black dark:text-white">Мемные джунгли</h3>
+            <p className="text-sm text-gray-500">
+              Сюда мы вставим кота и навалим мемы на фоне.
+            </p>
+            <div className="absolute bottom-12 w-full px-8">
+              <Link href="/download" className="w-full h-14 bg-okak-orange rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-okak-orange/30 transition-all hover:scale-105 active:scale-95">
+                Подключиться
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* --- СЕКЦИЯ 2: TELEGRAM --- */}
+      <section className="w-full py-12 px-6 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-black dark:text-white">
+            Следи за новостями и акциями <br/>в нашем Telegram-канале
+          </h2>
+          
+          <a href="https://t.me/okak_vpn" target="_blank" rel="noopener noreferrer" className="inline-block relative group">
+            <div className="absolute inset-0 bg-[#229ED9] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
+            <div className="relative z-10 bg-[#229ED9] hover:bg-[#1e8db3] text-white text-lg md:text-xl font-bold py-4 px-10 rounded-full flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-xl">
+              <Send className="w-6 h-6" />
+              Telegram Okak VPN
+            </div>
+          </a>
+          
+          <p className="mt-8 text-gray-500 max-w-2xl mx-auto">
+            Новости Okak VPN, розыгрыши подписок, акции и промокоды — все это ждет тебя в нашем канале.
+          </p>
+        </div>
+      </section>
+
+      {/* --- СЕКЦИЯ 3: КАРТОЧКИ ПРЕИМУЩЕСТВ --- */}
+      <section className="w-full py-12 px-6 lg:px-12 bg-white dark:bg-[#0B0B0F]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div className={cardClass}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-okak-orange overflow-hidden relative shadow-md">
+                   <Image src="/okak-logo.png" alt="Okak" fill className="object-cover" />
+                </div>
+                <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">Privacy First</p></div>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Абсолютная приватность.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed">Мы не храним, не отслеживаем и не передаем информацию о вашей активности. Ноль логов.</p>
+            </div>
+
+            <div className={cardClass}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-okak-orange overflow-hidden relative shadow-md">
+                   <Image src="/okak-logo.png" alt="Okak" fill className="object-cover" />
+                </div>
+                <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">Lightning Fast</p></div>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Скорость света. <br/>Протоколы нового поколения.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed">Используем современные протоколы (VLESS, Reality), которые невозможно замедлить. YouTube в 4K летает.</p>
+            </div>
+
+            <div className={`${cardClass} md:col-span-2`}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-okak-orange overflow-hidden relative shadow-md">
+                   <Image src="/okak-logo.png" alt="Okak" fill className="object-cover" />
+                </div>
+                <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">Total Control</p></div>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Ваша свобода. Любые приложения.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-2xl">Используйте любимые клиенты: V2Ray, Streisand, FoXray или Shadowrocket. Наш VPN — универсальный ключ.</p>
+            </div>
+
+            <div className={`${cardClass} md:col-span-2`}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-okak-orange overflow-hidden relative shadow-md">
+                   <Image src="/okak-logo.png" alt="Okak" fill className="object-cover" />
+                </div>
+                <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">One for All</p></div>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Один доступ на все устройства.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-3xl mb-8">Забудьте про ограничения. Подключите телефон, планшет, ноутбук и компьютер к одному аккаунту.</p>
+              
+              <div className="flex flex-wrap gap-3">
+                <Link href="/download" className={buttonBaseClass}>
+                  <ShieldCheck className="w-5 h-5" />
+                  Защитить все гаджеты
+                </Link>
+                <div className="flex gap-2">
+                  <Link href="/download" className={miniButtonClass}><Image src="/apple-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href="/download" className={miniButtonClass}><Image src="/android-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href="/download" className={miniButtonClass}><Image src="/windows-logo.svg" alt="W" width={24} height={24} className={miniImageIconClass} /></Link>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* --- СЕКЦИЯ 4: ПРОБНЫЙ ПЕРИОД --- */}
+      <section className="w-full py-16 px-6 pb-32">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black dark:text-white leading-tight">
+            Ваш пробный период начинается <br className="hidden md:block"/>
+            прямо сейчас{" "}
+            <span className="inline-block bg-[#386118] text-white px-4 py-1 md:px-8 md:py-2 rounded-full whitespace-nowrap mt-2 md:mt-0 align-middle text-2xl md:text-5xl">
+              Без привязки карты
+            </span>
+          </h2>
+
+          <div className="flex flex-col items-center gap-8">
+            <p className="text-gray-500 max-w-2xl text-lg">
+              Наслаждайтесь полным доступом к Okak VPN без ввода данных карты. Просто зарегистрируйтесь в боте и начните пользоваться.
+            </p>
+
+            {/* Кнопка "Попробуйте бесплатно" -> Переход в ТГ бот */}
+            <a href="https://t.me/okak_vpn_bot" target="_blank" rel="noopener noreferrer" className={buttonBaseClass}>
+              <Gift className="w-5 h-5" />
+              Попробуйте бесплатно
+            </a>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }

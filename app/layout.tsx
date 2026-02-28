@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer"; // <--- Импортируем Footer
 
-// Inter - отличный минималистичный шрифт, похожий на Apple (SF Pro)
 const inter = Inter({ subsets:["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "Okak VPN",
-  description: "Окак, вот это скорость!",
+  title: "Okak VPN | Включил и понял",
+  description: "Один аккаунт для всей семьи. Никаких логов.",
 };
 
 export default function RootLayout({
@@ -21,11 +22,15 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased selection:bg-okak-orange selection:text-white`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" /* По умолчанию всегда темная тема */
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <div className="pt-20 min-h-screen">
+            {children}
+          </div>
+          <Footer /> {/* <--- Вставляем Footer здесь, чтобы он был на ВСЕХ страницах */}
         </ThemeProvider>
       </body>
     </html>
