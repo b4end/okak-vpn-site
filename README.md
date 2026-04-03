@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦊 Okak VPN — Modern Landing Page
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
-First, run the development server:
+Современный, быстрый и стильный лендинг для сервиса **Okak VPN**. Проект построен на самых передовых технологиях веб-разработки с упором на эстетику, плавность анимаций и высокую конверсию.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎬 Демонстрация интерфейса
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Okak VPN Scrolling Demo](demo.gif)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Дизайн-система и UI/UX
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Интерфейс вдохновлен эстетикой Apple и современными трендами веб-дизайна:
+*   **Bento Grid:** Контент структурирован в виде аккуратных скругленных карточек (Bento Box), что улучшает читаемость и восприятие фичей сервиса.
+*   **Dark/Light Mode:** Бесшовная смена тем (через `next-themes`). Темная тема использует глубокий "дорогой" черный цвет (`#0B0B0F`), светлая — чистый белый.
+*   **Pill-shaped UI:** Закругленные элементы навигации и кнопки (`rounded-full`) с тактильным откликом при наведении (`hover:scale-105 active:scale-95`).
+*   **Акцентный цвет:** Фирменный оранжевый `#FF8303` (okak-orange) используется для выделения главного действия (Call-to-Action) и выделения текста.
+*   **Rich Media:** Использование уникальных иллюстраций (маскот Кот, "Мемные джунгли") для создания дружелюбного и запоминающегося образа бренда.
 
-## Learn More
+## 🛠 Технологический стек
 
-To learn more about Next.js, take a look at the following resources:
+*   **Фреймворк:**[Next.js 15](https://nextjs.org/) (App Router) — серверный рендеринг и максимальная SEO-оптимизация.
+*   **Стилизация:** [Tailwind CSS v4](https://tailwindcss.com/) — новейшая версия с новым движком компиляции.
+*   **Язык:** [TypeScript](https://www.typescriptlang.org/) — строгая типизация для надежности кода.
+*   **Иконки:** [Lucide React](https://lucide.dev/) — легкие и консистентные SVG-иконки.
+*   **Темы:** `next-themes` для управления цветовыми режимами системы.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Быстрый старт
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Убедитесь, что у вас установлен Node.js (рекомендуется v20+).
 
-## Deploy on Vercel
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone https://github.com/b4end/okak-vpn-site.git
+   cd okak-vpn-site
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Установите зависимости:**
+   ```bash
+   npm install
+   # или
+   yarn install
+   # или
+   pnpm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Запустите сервер для разработки:**
+   ```bash
+   npm run dev
+   ```
+
+4. Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере.
+
+## 📂 Структура проекта
+
+*   `app/` — основные страницы, роутинг (App Router) и глобальные стили (`globals.css`).
+*   `app/components/` — переиспользуемые UI-компоненты:
+    *   `header.tsx` — навигационная панель с размытием фона и переключателем тем.
+    *   `footer.tsx` — подвал сайта с картой ссылок.
+    *   `theme-provider.tsx` / `theme-toggle.tsx` — логика переключения Dark/Light mode.
+*   `public/` — статические файлы, логотипы платформ (iOS, Android, Windows) и медиа-ассеты.
+
+## ⚖️ Отказ от ответственности (Legal Disclaimer)
+
+Данный репозиторий содержит исключительно исходный код пользовательского интерфейса (фронтенд-шаблон) и опубликован в качестве **портфолио веб-разработчика** для демонстрации навыков работы с Next.js, Tailwind CSS и UI/UX дизайном.
+
+1. **Не является рекламой:** Данный проект не является рекламой VPN-сервисов, прокси или любых других технологий маршрутизации трафика.
+2. **Соблюдение законодательства:** В соответствии с требованиями Федерального закона от 27.07.2006 № 149-ФЗ «Об информации, информационных технологиях и о защите информации» (вкл. запрет на популяризацию средств обхода блокировок от 1 марта 2024 года), автор репозитория:
+   * Не призывает к использованию средств обхода блокировок для доступа к запрещенным на территории РФ ресурсам.
+   * Не предоставляет инструкций по настройке или созданию таких средств.
+   * Не продает и не оказывает услуги по предоставлению доступа к VPN.
+3. **Демонстрационный контент:** Все тексты (включая заголовки вроде "доступ к сервисам"), изображения и ссылки, использованные в исходном коде данного UI-шаблона, являются вымышленными или приведены исключительно в демонстрационных (Mockup) целях для заполнения визуальной структуры макета.
+
+Ответственность за использование данного шаблона, изменение его текстов и развертывание в сети Интернет полностью лежит на конечном пользователе.

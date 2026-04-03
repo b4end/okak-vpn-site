@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import { Header } from "./components/header";
-import { Footer } from "./components/footer"; // <--- Импортируем Footer
+import { Footer } from "./components/footer";
 
 const inter = Inter({ subsets:["latin", "cyrillic"] });
 
@@ -19,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased selection:bg-okak-orange selection:text-white`}>
+      <body 
+        className={`${inter.className} antialiased selection:bg-okak-orange selection:text-white`}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -30,7 +33,7 @@ export default function RootLayout({
           <div className="pt-20 min-h-screen">
             {children}
           </div>
-          <Footer /> {/* <--- Вставляем Footer здесь, чтобы он был на ВСЕХ страницах */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

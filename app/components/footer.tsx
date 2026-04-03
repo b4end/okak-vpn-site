@@ -54,7 +54,7 @@ export function Footer() {
           {/* Колонка 4: Поддержка */}
           <div className="flex flex-col gap-4">
             <h3 className="font-bold text-xl mb-2">Поддержка</h3>
-            <a href="https://t.me/okak_vpn" target="_blank" className="text-gray-400 hover:text-[#229ED9] transition-colors">Telegram</a>
+            <a href="https://t.me/your_bot_here" target="_blank" className="text-gray-400 hover:text-[#229ED9] transition-colors">Telegram</a>
             <Link href="/support" className="text-gray-400 hover:text-okak-orange transition-colors">Почта</Link>
             <Link href="/support" className="text-gray-400 hover:text-okak-orange transition-colors">Инструкции</Link>
           </div>

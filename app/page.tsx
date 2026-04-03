@@ -3,70 +3,62 @@ import Link from "next/link";
 import { Send, Gift, ShieldCheck } from "lucide-react";
 
 export default function Home() {
-  // Единый стандарт для широких кнопок с анимацией масштабирования и нажатия
   const buttonBaseClass = "w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 font-medium border border-transparent cursor-pointer";
-  
-  // Единый стандарт для мини-кнопок
-  const miniButtonClass = "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all hover:scale-105 active:scale-90 cursor-pointer";
-
   const imageIconClass = "w-5 h-5 invert dark:invert-0";
+  const miniButtonClass = "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all hover:scale-105 active:scale-90 cursor-pointer";
   const miniImageIconClass = "w-6 h-6 invert dark:invert-0";
-  
   const cardClass = "bg-gray-50 dark:bg-[#151518] p-8 md:p-10 rounded-[2rem] flex flex-col items-start text-left hover:bg-gray-100 dark:hover:bg-[#1A1A1E] transition-colors duration-300 border border-black/5 dark:border-white/5";
 
   return (
     <main className="flex flex-col items-center w-full overflow-hidden">
       
-      {/* --- СЕКЦИЯ 1: Главный экран --- */}
-      <div className="flex flex-col items-center pt-6 lg:pt-10 px-6 lg:px-12 w-full max-w-7xl">
-        <div className="max-w-4xl w-full text-center flex flex-col items-center z-10">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] text-black dark:text-white mb-6 max-w-3xl">
-            Верните доступ к заблокированным сервисам без потери скорости.
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-10 font-medium max-w-2xl">
-            Один аккаунт для всех устройств.
-          </p>
+      {/* --- СЕКЦИЯ 1: Главный экран (Заголовок и Кнопки) --- */}
+      <div className="flex flex-col items-center pt-6 lg:pt-10 px-6 lg:px-12 w-full max-w-7xl text-center z-20">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] text-black dark:text-white mb-6 max-w-3xl">
+          Верните доступ к заблокированным сервисам без потери скорости.
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-10 font-medium max-w-2xl">
+          Один аккаунт для всех устройств.
+        </p>
 
-          {/* Кнопки скачивания -> /download */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full max-w-4xl">
-            <Link href="/download" className={buttonBaseClass}>
-              <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
-              iOS / iPadOS
-            </Link>
-            <Link href="/download" className={buttonBaseClass}>
-              <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
-              Android
-            </Link>
-            <Link href="/download" className={buttonBaseClass}>
-              <Image src="/windows-logo.svg" alt="Windows" width={20} height={20} className={imageIconClass} />
-              Windows
-            </Link>
-            <Link href="/download" className={buttonBaseClass}>
-              <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
-              macOS
-            </Link>
-            <Link href="/download" className={buttonBaseClass}>
-              <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
-              Linux
-            </Link>
-          </div>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full max-w-4xl">
+          <Link href="/download" className={buttonBaseClass}>
+            <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
+            iOS / iPadOS
+          </Link>
+          <Link href="/download" className={buttonBaseClass}>
+            <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
+            Android
+          </Link>
+          <Link href="/download" className={buttonBaseClass}>
+            <Image src="/windows-logo.svg" alt="Windows" width={20} height={20} className={imageIconClass} />
+            Windows
+          </Link>
+          <Link href="/download" className={buttonBaseClass}>
+            <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
+            macOS
+          </Link>
+          <Link href="/download" className={buttonBaseClass}>
+            <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
+            Linux
+          </Link>
         </div>
+      </div>
 
-        {/* Телефон и Кот */}
-        <div className="mt-16 w-full flex justify-center relative">
-          <div className="absolute top-10 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-okak-orange/10 dark:bg-okak-orange/5 rounded-full blur-3xl -z-10"></div>
-          <div className="w-[320px] md:w-[380px] h-[600px] bg-white dark:bg-[#111116] border-[6px] border-gray-100 dark:border-[#1C1C1E] rounded-[3rem] shadow-2xl flex flex-col items-center justify-center p-8 text-center relative overflow-hidden z-10">
-            <div className="text-4xl mb-4">🐱</div>
-            <h3 className="text-xl font-bold mb-2 text-black dark:text-white">Мемные джунгли</h3>
-            <p className="text-sm text-gray-500">
-              Сюда мы вставим кота и навалим мемы на фоне.
-            </p>
-            <div className="absolute bottom-12 w-full px-8">
-              <Link href="/download" className="w-full h-14 bg-okak-orange rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-okak-orange/30 transition-all hover:scale-105 active:scale-95">
-                Подключиться
-              </Link>
-            </div>
-          </div>
+      {/* --- ГИГАНТСКАЯ СЕКЦИЯ: МЕМНЫЕ ДЖУНГЛИ --- */}
+      {/* ИЗМЕНЕНИЕ ТУТ: mt-4 и lg:-mt-24 (было -mt-12) максимально сократили расстояние */}
+      <div className="relative w-full mt-4 lg:-mt-24 select-none">
+        
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full bg-okak-orange/20 blur-[120px] -z-10 pointer-events-none"></div>
+        
+        <div className="w-full h-[450px] md:h-[650px] lg:h-[800px] relative overflow-hidden">
+          <Image 
+            src="/meme-jungle.png" 
+            alt="Okak VPN Meme Jungle" 
+            fill
+            className="object-cover object-bottom"
+            priority
+          />
         </div>
       </div>
 
@@ -76,16 +68,14 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-black dark:text-white">
             Следи за новостями и акциями <br/>в нашем Telegram-канале
           </h2>
-          
-          <a href="https://t.me/okak_vpn" target="_blank" rel="noopener noreferrer" className="inline-block relative group">
+          <a href="https://t.me/your_bot_here" target="_blank" rel="noopener noreferrer" className="inline-block relative group">
             <div className="absolute inset-0 bg-[#229ED9] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
             <div className="relative z-10 bg-[#229ED9] hover:bg-[#1e8db3] text-white text-lg md:text-xl font-bold py-4 px-10 rounded-full flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-xl">
               <Send className="w-6 h-6" />
               Telegram Okak VPN
             </div>
           </a>
-          
-          <p className="mt-8 text-gray-500 max-w-2xl mx-auto">
+          <p className="mt-8 text-gray-500 max-w-2xl mx-auto text-lg">
             Новости Okak VPN, розыгрыши подписок, акции и промокоды — все это ждет тебя в нашем канале.
           </p>
         </div>
@@ -95,7 +85,6 @@ export default function Home() {
       <section className="w-full py-12 px-6 lg:px-12 bg-white dark:bg-[#0B0B0F]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
             <div className={cardClass}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-okak-orange overflow-hidden relative shadow-md">
@@ -151,7 +140,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -166,14 +154,11 @@ export default function Home() {
               Без привязки карты
             </span>
           </h2>
-
           <div className="flex flex-col items-center gap-8">
             <p className="text-gray-500 max-w-2xl text-lg">
               Наслаждайтесь полным доступом к Okak VPN без ввода данных карты. Просто зарегистрируйтесь в боте и начните пользоваться.
             </p>
-
-            {/* Кнопка "Попробуйте бесплатно" -> Переход в ТГ бот */}
-            <a href="https://t.me/okak_vpn_bot" target="_blank" rel="noopener noreferrer" className={buttonBaseClass}>
+            <a href="https://t.me/your_bot_here" target="_blank" rel="noopener noreferrer" className={buttonBaseClass}>
               <Gift className="w-5 h-5" />
               Попробуйте бесплатно
             </a>
