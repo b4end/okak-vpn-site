@@ -9,7 +9,7 @@
 
 ## 🎬 Демонстрация интерфейса
 
-![Okak VPN Scrolling Demo](public/demo-site.mp4)
+![Okak VPN Scrolling Demo](public/demo-site.mov)
 
 ## ✨ Дизайн-система и UI/UX
 
