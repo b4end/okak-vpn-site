@@ -15,26 +15,26 @@ export default function Home() {
       {/* --- СЕКЦИЯ 1: Главный экран (Заголовок и Кнопки) --- */}
       <div className="flex flex-col items-center pt-6 lg:pt-10 px-6 lg:px-12 w-full max-w-7xl text-center z-20">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] text-black dark:text-white mb-6 max-w-3xl">
-          Верните доступ к заблокированным сервисам без потери скорости.
+          Любимые сервисы всегда на связи. Безопасно и быстро.
         </h1>
         <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-10 font-medium max-w-2xl">
           Один аккаунт для всех устройств.
         </p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full max-w-4xl">
-          <Link href="/download" className={buttonBaseClass}>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-fit sm:w-full max-w-4xl mx-auto">
+          <Link href="/download/ios" className={buttonBaseClass}>
             <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
             iOS / iPadOS
           </Link>
-          <Link href="/download" className={buttonBaseClass}>
+          <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={buttonBaseClass}>
             <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
             Android
           </Link>
-          <Link href="/download" className={buttonBaseClass}>
+          <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className={buttonBaseClass}>
             <Image src="/windows-logo.svg" alt="Windows" width={20} height={20} className={imageIconClass} />
             Windows
           </Link>
-          <Link href="/download" className={buttonBaseClass}>
+          <Link href="/download/macos" className={buttonBaseClass}>
             <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
             macOS
           </Link>
@@ -46,20 +46,18 @@ export default function Home() {
       </div>
 
       {/* --- ГИГАНТСКАЯ СЕКЦИЯ: МЕМНЫЕ ДЖУНГЛИ --- */}
-      {/* ИЗМЕНЕНИЕ ТУТ: mt-4 и lg:-mt-24 (было -mt-12) максимально сократили расстояние */}
-      <div className="relative w-full mt-4 lg:-mt-24 select-none">
+      <div className="relative w-full mt-8 md:mt-24 select-none flex justify-center">
         
+        {/* Оранжевое свечение на фоне */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full bg-okak-orange/20 blur-[120px] -z-10 pointer-events-none"></div>
-        
-        <div className="w-full h-[450px] md:h-[650px] lg:h-[800px] relative overflow-hidden">
-          <Image 
-            src="/meme-jungle.png" 
-            alt="Okak VPN Meme Jungle" 
-            fill
-            className="object-cover object-bottom"
-            priority
-          />
-        </div>
+        <Image 
+          src="/meme_jungle.png" 
+          alt="Okak VPN Meme Jungle" 
+          width={4000} 
+          height={1100}
+          className="w-full max-w-[1400px] h-[380px] md:h-auto object-cover object-bottom"
+          priority
+        />
       </div>
 
       {/* --- СЕКЦИЯ 2: TELEGRAM --- */}
@@ -68,7 +66,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl font-bold mb-8 text-black dark:text-white">
             Следи за новостями и акциями <br/>в нашем Telegram-канале
           </h2>
-          <a href="https://t.me/your_bot_here" target="_blank" rel="noopener noreferrer" className="inline-block relative group">
+          <a href={process.env.NEXT_PUBLIC_TG_CHANNEL_URL || "#"} target="_blank" rel="noopener noreferrer" className="inline-block relative group">
             <div className="absolute inset-0 bg-[#229ED9] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
             <div className="relative z-10 bg-[#229ED9] hover:bg-[#1e8db3] text-white text-lg md:text-xl font-bold py-4 px-10 rounded-full flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-xl">
               <Send className="w-6 h-6" />
@@ -114,8 +112,8 @@ export default function Home() {
                 </div>
                 <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">Total Control</p></div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Ваша свобода. Любые приложения.</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-2xl">Используйте любимые клиенты: V2Ray, Streisand, FoXray или Shadowrocket. Наш VPN — универсальный ключ.</p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Ваша свобода. Любые клиенты.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-2xl">Используйте любимые клиенты: V2RayTun, Hiddify или Happ. Наш VPN — универсальный ключ.</p>
             </div>
 
             <div className={`${cardClass} md:col-span-2`}>
@@ -125,8 +123,8 @@ export default function Home() {
                 </div>
                 <div><h4 className="font-bold text-black dark:text-white">Okak VPN</h4><p className="text-xs text-gray-500">One for All</p></div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Один доступ на все устройства.</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-3xl mb-8">Забудьте про ограничения. Подключите телефон, планшет, ноутбук и компьютер к одному аккаунту.</p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white leading-tight">Одна подписка на все устройства.</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-3xl mb-8">Забудьте про разные VPN сервисы на каждом устройстве. Подключите телефон, планшет, ноутбук и компьютер к одному аккаунту.</p>
               
               <div className="flex flex-wrap gap-3">
                 <Link href="/download" className={buttonBaseClass}>
@@ -134,9 +132,9 @@ export default function Home() {
                   Защитить все гаджеты
                 </Link>
                 <div className="flex gap-2">
-                  <Link href="/download" className={miniButtonClass}><Image src="/apple-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
-                  <Link href="/download" className={miniButtonClass}><Image src="/android-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
-                  <Link href="/download" className={miniButtonClass}><Image src="/windows-logo.svg" alt="W" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href="/download/ios" className={miniButtonClass}><Image src="/apple-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={miniButtonClass}><Image src="/android-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className={miniButtonClass}><Image src="/windows-logo.svg" alt="W" width={24} height={24} className={miniImageIconClass} /></Link>
                 </div>
               </div>
             </div>
@@ -158,9 +156,12 @@ export default function Home() {
             <p className="text-gray-500 max-w-2xl text-lg">
               Наслаждайтесь полным доступом к Okak VPN без ввода данных карты. Просто зарегистрируйтесь в боте и начните пользоваться.
             </p>
-            <a href="https://t.me/your_bot_here" target="_blank" rel="noopener noreferrer" className={buttonBaseClass}>
-              <Gift className="w-5 h-5" />
-              Попробуйте бесплатно
+            <a 
+              href={process.env.NEXT_PUBLIC_TG_BOT_URL || "#"} 
+              target="_blank" 
+              className={buttonBaseClass}
+            >
+              <Gift className="w-5 h-5" />Попробуйте бесплатно
             </a>
           </div>
         </div>

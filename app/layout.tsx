@@ -8,7 +8,7 @@ import { Footer } from "./components/footer";
 const inter = Inter({ subsets:["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "Okak VPN | Включил и понял",
+  title: "Okak VPN",
   description: "Один аккаунт для всей семьи. Никаких логов.",
 };
 

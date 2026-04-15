@@ -37,10 +37,10 @@ export function Footer() {
           {/* Колонка 2: Скачать */}
           <div className="flex flex-col gap-4">
             <h3 className="font-bold text-xl mb-2">Скачать</h3>
-            <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">iOS / iPadOS</Link>
-            <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">Android</Link>
-            <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">Windows</Link>
-            <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">macOS</Link>
+            <Link href="/download/ios" className="text-gray-400 hover:text-okak-orange transition-colors">iOS / iPadOS</Link>
+            <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className="text-gray-400 hover:text-okak-orange transition-colors">Android</Link>
+            <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className="text-gray-400 hover:text-okak-orange transition-colors">Windows</Link>
+            <Link href="/download/macos" className="text-gray-400 hover:text-okak-orange transition-colors">macOS</Link>
             <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">Linux</Link>
           </div>
 
@@ -53,8 +53,8 @@ export function Footer() {
 
           {/* Колонка 4: Поддержка */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-bold text-xl mb-2">Поддержка</h3>
-            <a href="https://t.me/your_bot_here" target="_blank" className="text-gray-400 hover:text-[#229ED9] transition-colors">Telegram</a>
+            <h3 className="font-bold text-white text-xl">Поддержка</h3>
+            <Link href={process.env.NEXT_PUBLIC_TG_CHANNEL_URL || "#"} className="text-gray-400 hover:text-okak-orange transition-colors">Telegram Канал</Link>
             <Link href="/support" className="text-gray-400 hover:text-okak-orange transition-colors">Почта</Link>
             <Link href="/support" className="text-gray-400 hover:text-okak-orange transition-colors">Инструкции</Link>
           </div>
