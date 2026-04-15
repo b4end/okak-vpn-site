@@ -41,7 +41,7 @@ export function Footer() {
             <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className="text-gray-400 hover:text-okak-orange transition-colors">Android</Link>
             <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className="text-gray-400 hover:text-okak-orange transition-colors">Windows</Link>
             <Link href="/download/macos" className="text-gray-400 hover:text-okak-orange transition-colors">macOS</Link>
-            <Link href="/download" className="text-gray-400 hover:text-okak-orange transition-colors">Linux</Link>
+            <Link href="https://github.com/hiddify/hiddify-app/releases/download/v4.1.1/Hiddify-Linux-x64-AppImage.AppImage" className="text-gray-400 hover:text-okak-orange transition-colors">Linux</Link>
           </div>
 
           {/* Колонка 3: О нас */}

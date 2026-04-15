@@ -38,7 +38,7 @@ export default function Home() {
             <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
             macOS
           </Link>
-          <Link href="/download" className={buttonBaseClass}>
+          <Link href="https://github.com/hiddify/hiddify-app/releases/download/v4.1.1/Hiddify-Linux-x64-AppImage.AppImage" className={buttonBaseClass}>
             <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
             Linux
           </Link>
