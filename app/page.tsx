@@ -26,11 +26,11 @@ export default function Home() {
             <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
             iOS / iPadOS
           </Link>
-          <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={buttonBaseClass}>
+          <Link href={process.env.NEXT_PUBLIC_DL_GOOGLE_PLAY || "#"} className={buttonBaseClass}>
             <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
             Android
           </Link>
-          <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className={buttonBaseClass}>
+          <Link href={process.env.NEXT_PUBLIC_DL_EXE || "#"} className={buttonBaseClass}>
             <Image src="/windows-logo.svg" alt="Windows" width={20} height={20} className={imageIconClass} />
             Windows
           </Link>
@@ -38,11 +38,11 @@ export default function Home() {
             <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
             macOS
           </Link>
-          <Link href="/download" className={buttonBaseClass}>
+          <Link href={process.env.NEXT_PUBLIC_DL_APP_IMAGE || "#"} className={buttonBaseClass}>
             <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
             Linux
           </Link>
-          <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={buttonBaseClass}>
+          <Link href={process.env.NEXT_PUBLIC_DL_GOOGLE_PLAY || "#"} className={buttonBaseClass}>
             <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
             Android TV
           </Link>
@@ -137,8 +137,8 @@ export default function Home() {
                 </Link>
                 <div className="flex gap-2">
                   <Link href="/download/ios" className={miniButtonClass}><Image src="/apple-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
-                  <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={miniButtonClass}><Image src="/android-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
-                  <Link href="https://storage.v2raytun.com/v2RayTun_Setup.exe" className={miniButtonClass}><Image src="/windows-logo.svg" alt="W" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href={process.env.NEXT_PUBLIC_DL_GOOGLE_PLAY || "#"} className={miniButtonClass}><Image src="/android-logo.svg" alt="A" width={24} height={24} className={miniImageIconClass} /></Link>
+                  <Link href={process.env.NEXT_PUBLIC_DL_EXE || "#"} className={miniButtonClass}><Image src="/windows-logo.svg" alt="W" width={24} height={24} className={miniImageIconClass} /></Link>
                 </div>
               </div>
             </div>

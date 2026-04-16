@@ -1,7 +1,6 @@
 // app/download/page.tsx
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Download, Bot } from "lucide-react";
@@ -62,13 +61,13 @@ export default function DownloadPage() {
     {
       icon: "/android-logo.svg",
       label: "Android",
-      href: "https://play.google.com/store/apps/details?id=com.v2raytun.android",
+      href: process.env.NEXT_PUBLIC_DL_GOOGLE_PLAY || "#",
       external: true,
     },
     {
       icon: "/windows-logo.svg",
       label: "Windows",
-      href: "https://storage.v2raytun.com/v2RayTun_Setup.exe",
+      href: process.env.NEXT_PUBLIC_DL_EXE || "#",
       external: true,
     },
     {
@@ -79,13 +78,13 @@ export default function DownloadPage() {
     {
       icon: "/linux-logo.svg",
       label: "Linux",
-      href: "https://github.com/hiddify/hiddify-app/releases/download/v4.1.1/Hiddify-Linux-x64-AppImage.AppImage",
+      href: process.env.NEXT_PUBLIC_DL_APP_IMAGE || "#",
       external: true,
     },
     {
       icon: "/android-logo.svg",
       label: "Android TV",
-      href: "https://play.google.com/store/apps/details?id=com.v2raytun.android",
+      href: process.env.NEXT_PUBLIC_DL_GOOGLE_PLAY || "#",
       external: true,
     },
   ];

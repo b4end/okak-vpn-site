@@ -52,7 +52,7 @@ export default function IOSDownloadPage() {
         {/* Блок кнопок */}
         <div className="flex flex-col gap-4 w-full">
           <a 
-            href="https://apps.apple.com/us/app/v2raytun/id6476628951" 
+            href={process.env.NEXT_PUBLIC_DL_APP_STORE || "#"}
             className={`${buttonBase} bg-black text-white dark:bg-white dark:text-black shadow-lg`}
           >
             <Image src="/apple-logo.svg" alt="Apple" width={40} height={40} className={imageIconClass} />
@@ -60,7 +60,7 @@ export default function IOSDownloadPage() {
           </a>
 
           <a 
-            href="https://vc.ru/services/1173441-kak-pomenyat-region-na-aifone-izmenit-stranu-v-app-store" 
+            href={process.env.NEXT_PUBLIC_CHANGING_REGION || "#"}
             className={`${buttonBase} bg-transparent border-2 border-black/10 dark:border-white/10 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5`}
           >
             <Settings2 className="w-6 h-6" />
