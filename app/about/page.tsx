@@ -6,39 +6,50 @@ import { Shield, Zap, MessageCircle, Wallet, Sliders, Eye, Heart, Download, Mess
 import Link from "next/link";
 import Image from "next/image";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
-
+// Варианты анимации для отдельных элементов
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
-// Компонент Bento-карточки
+// Компонент Bento-карточки с индивидуальной задержкой
 const BentoCard = ({ 
   icon: Icon, 
   title, 
-  description 
+  description,
+  delay = 0
 }: { 
   icon: React.ElementType; 
   title: string; 
   description: string;
+  delay?: number;
 }) => (
   <motion.div
-    variants={itemVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-50px" }}
+    variants={{
+      hidden: { opacity: 0, y: 24 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { 
+          duration: 0.5, 
+          ease: "easeOut",
+          delay: delay 
+        },
+      },
+    }}
+    whileHover={{ y: -4 }}
     className="bg-gray-50 dark:bg-[#151518] p-6 sm:p-8 rounded-3xl 
                border border-black/5 dark:border-white/5
                hover:bg-gray-100 dark:hover:bg-[#1A1A1E] 
-               transition-colors duration-300 flex flex-col gap-4"
+               transition-colors duration-300 flex flex-col gap-4
+               relative z-10"
   >
     <div className="w-12 h-12 rounded-2xl bg-okak-orange/10 
                     flex items-center justify-center">
@@ -54,17 +65,32 @@ const BentoCard = ({
 );
 
 export default function AboutPage() {
+  // Массив карточек для удобного управления задержками
+  const bentoCards = [
+    { icon: Shield, title: "Приватность — не товар", description: "Никаких логов. Данные проходят сквозь наши серверы, не задерживаясь ни на секунду для записи или сохранения." },
+    { icon: MessageCircle, title: "Слушаем, а не угадываем", description: "Наши обновления рождаются из ваших идей, а не из догадок маркетинга. Пишите — мы читаем. И внедряем то, что действительно нужно." },
+    { icon: Zap, title: "Стабильность без компромиссов", description: "Протоколы нового поколения маскируют трафик так, что его сложно просто распознать и заблокировать." },
+    { icon: Wallet, title: "Доступная свобода", description: "Качество не должно стоить как крыло самолёта. Честная цена без скрытых платежей и десятка неудобных тарифов." },
+    { icon: Sliders, title: "Выбор за вами", description: "Любой совместимый клиент. Мы не привязываем вас к своему приложению." },
+    { icon: Eye, title: "Прозрачность без приукрас", description: "Никакой юридической простыни. Честность и открытые ответы на ваши вопросы." },
+  ];
+
   return (
     <main className="min-h-screen py-12 sm:py-20 px-6">
+      {/* Главный контейнер с анимацией по скроллу */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
+        variants={itemVariants}
         className="max-w-6xl mx-auto"
       >
         {/* --- ГЕРОЙ --- */}
-        <motion.div variants={itemVariants} className="text-center mb-16 sm:mb-14">
+        <motion.div 
+          variants={itemVariants}
+          viewport={{ once: true }}
+          className="text-center mb-16 sm:mb-14"
+        >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-3">
             О нас
           </h1>
@@ -74,8 +100,11 @@ export default function AboutPage() {
         </motion.div>
 
         {/* --- МИССИЯ И ВИДЕНИЕ (Текстовый блок) --- */}
-        <motion.div variants={itemVariants} className="max-w-3xl mx-auto text-center mb-20 sm:mb-20">
-
+        <motion.div 
+          variants={itemVariants}
+          viewport={{ once: true, margin: "-150px" }}
+          className="relative max-w-3xl mx-auto text-center mb-20 sm:mb-20"
+        >
           {/* 🔆 Лёгкое свечение на заднем плане */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
                           w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] 
@@ -83,13 +112,13 @@ export default function AboutPage() {
                           blur-[120px] sm:blur-[150px] 
                           rounded-full -z-10 pointer-events-none" />
 
-          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+          <p className="relative z-10 text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             <strong className="text-black dark:text-white">Okak VPN родился не в корпоративном кабинете,</strong> а из простого пользовательского неудобства. 
             Мы устали от «бесплатных» решений, где продают внимание рекламе, и от дорогих сервисов, 
             которые перестают работать сразу после оплаты. Нам нужен был просто работающий интернет: быстрый, 
             стабильный и без лишних вопросов.
           </p>
-          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="relative z-10 text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
             Мы маскируем трафик современными протоколами, чтобы вы могли пользоваться любимыми сервисами 
             так, как задумано. Без компромиссов. Мы верим в интернет, каким его придумали изначально — 
             открытым пространством для идей, а не инструментом слежки. Наша цель — сделать доступ к нему 
@@ -98,44 +127,34 @@ export default function AboutPage() {
         </motion.div>
 
         {/* --- ЦЕННОСТИ (Bento Grid) --- */}
-        <motion.div 
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-20 sm:mb-28"
-        >
-          <BentoCard 
-            icon={Shield}
-            title="Приватность — не товар"
-            description="Никаких логов. Данные проходят сквозь наши серверы, не задерживаясь ни на секунду для записи или сохранения."
-          />
-          <BentoCard 
-            icon={MessageCircle}
-            title="Слушаем, а не угадываем"
-            description="Наши обновления рождаются из ваших идей, а не из догадок маркетинга. Пишите — мы читаем. И внедряем то, что действительно нужно."
-          />
-          <BentoCard 
-            icon={Zap}
-            title="Стабильность без компромиссов"
-            description="Протоколы нового поколения маскируют трафик так, что его сложно просто распознать и заблокировать."
-          />
-          <BentoCard 
-            icon={Wallet}
-            title="Доступная свобода"
-            description="Качество не должно стоить как крыло самолёта. Честная цена без скрытых платежей и десятка неудобных тарифов."
-          />
-          <BentoCard 
-            icon={Sliders}
-            title="Выбор за вами"
-            description="Любой совместимый клиент. Мы не привязываем вас к своему приложению."
-          />
-          <BentoCard 
-            icon={Eye}
-            title="Прозрачность без приукрас"
-            description="Никакой юридической простыни. Честность и открытые ответы на ваши вопросы."
-          />
-        </motion.div>
+        {/* Убрали containerVariants, теперь каждая карточка анимируется индивидуально */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-20 sm:mb-28 relative z-10">
+          {bentoCards.map((card, index) => (
+            <BentoCard 
+              key={index}
+              icon={card.icon}
+              title={card.title}
+              description={card.description}
+              delay={index * 0.1} // Задержка 0.1s между каждой карточкой
+            />
+          ))}
+        </div>
 
         {/* --- ФИЛОСОФИЯ (Цитата) --- */}
-        <motion.div variants={itemVariants} className="mb-20 sm:mb-28">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+            },
+          }}
+          className="mb-20 sm:mb-28 relative z-10"
+        >
           <div className="bg-gradient-to-br from-okak-orange/10 to-transparent 
                           dark:from-okak-orange/20 dark:to-transparent 
                           rounded-3xl p-8 sm:p-12 border-l-4 border-okak-orange relative overflow-hidden">
@@ -160,10 +179,26 @@ export default function AboutPage() {
         </motion.div>
 
         {/* --- ДОВЕРИЕ И СЕКРЕТНЫЙ ИНГРЕДИЕНТ --- */}
-        <motion.div variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 sm:mb-28">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { 
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+              }
+            }
+          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 sm:mb-28 relative z-10"
+        >
           {/* Блок доверия */}
           <motion.div 
-            variants={itemVariants} 
+            variants={itemVariants}
+            viewport={{ once: true }}
             className="bg-gray-50 dark:bg-[#151518] p-6 sm:p-8 rounded-3xl 
                       border border-black/5 dark:border-white/5 
                       hover:bg-gray-100 dark:hover:bg-[#1A1A1E] transition-colors duration-300
@@ -197,7 +232,8 @@ export default function AboutPage() {
 
           {/* Блок "Секретный ингредиент" */}
           <motion.div 
-            variants={itemVariants} 
+            variants={itemVariants}
+            viewport={{ once: true }}
             className="bg-gray-50 dark:bg-[#151518] p-6 sm:p-8 rounded-3xl 
                       border border-black/5 dark:border-white/5 
                       hover:bg-gray-100 dark:hover:bg-[#1A1A1E] transition-colors duration-300
@@ -231,7 +267,11 @@ export default function AboutPage() {
         </motion.div>
 
         {/* --- ПРИЗЫВ К ДЕЙСТВИЮ --- */}
-        <motion.div variants={itemVariants} className="text-center">
+        <motion.div 
+          variants={itemVariants}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center"
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4">
             Готовы попробовать?
           </h2>

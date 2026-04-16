@@ -10,13 +10,18 @@ interface PlatformCardProps {
   label: string;
   href: string;
   external?: boolean;
+  delay?: number;
 }
 
-const PlatformCard = ({ icon, label, href, external = false }: PlatformCardProps) => (
+const PlatformCard = ({ icon, label, href, external = false, delay = 0 }: PlatformCardProps) => (
   <motion.div
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.5, ease: "easeOut", delay }}
     whileHover={{ scale: 1.02, y: -2 }}
     whileTap={{ scale: 0.98 }}
-    transition={{ duration: 0.2 }}
+    className="relative z-10"
   >
     <Link
       href={href}
@@ -52,7 +57,7 @@ const PlatformCard = ({ icon, label, href, external = false }: PlatformCardProps
 );
 
 export default function DownloadPage() {
-  const platforms: PlatformCardProps[] = [
+  const platforms: Omit<PlatformCardProps, 'delay'>[] = [
     {
       icon: "/apple-logo.svg",
       label: "iOS / iPadOS",
@@ -90,14 +95,15 @@ export default function DownloadPage() {
   ];
 
   return (
-    <main className="min-h-screen py-12 sm:py-20 px-6">
+    <main className="min-h-screen py-12 sm:py-20 px-6 relative">
       <div className="max-w-5xl mx-auto">
         {/* Заголовок */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center mb-12 sm:mb-16 relative z-10"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">
             Скачать Okak VPN
@@ -108,25 +114,26 @@ export default function DownloadPage() {
         </motion.div>
 
         {/* Сетка платформ */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-12 sm:mb-16"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-12 sm:mb-16 relative z-10">
           {platforms.map((platform, index) => (
-            <PlatformCard key={index} {...platform} />
+            <PlatformCard 
+              key={index} 
+              {...platform} 
+              delay={index * 0.1} // Задержка 0.1s между карточками
+            />
           ))}
-        </motion.div>
+        </div>
 
         {/* Инструкция */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
           className="bg-gradient-to-br from-okak-orange/10 to-okak-orange/5 
                      dark:from-okak-orange/20 dark:to-okak-orange/10 
-                     rounded-3xl p-6 sm:p-8 border border-okak-orange/20"
+                     rounded-3xl p-6 sm:p-8 border border-okak-orange/20
+                     relative z-10"
         >
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-okak-orange 
