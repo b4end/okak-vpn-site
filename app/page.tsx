@@ -21,7 +21,7 @@ export default function Home() {
           Один аккаунт для всех устройств.
         </p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-fit sm:w-full max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-fit sm:w-full max-w-3xl mx-auto">
           <Link href="/download/ios" className={buttonBaseClass}>
             <Image src="/apple-logo.svg" alt="Apple" width={20} height={20} className={imageIconClass} />
             iOS / iPadOS
@@ -38,9 +38,13 @@ export default function Home() {
             <Image src="/apple-logo.svg" alt="macOS" width={20} height={20} className={imageIconClass} />
             macOS
           </Link>
-          <Link href="https://github.com/hiddify/hiddify-app/releases/download/v4.1.1/Hiddify-Linux-x64-AppImage.AppImage" className={buttonBaseClass}>
+          <Link href="/download" className={buttonBaseClass}>
             <Image src="/linux-logo.svg" alt="Linux" width={20} height={20} className={imageIconClass} />
             Linux
+          </Link>
+          <Link href="https://play.google.com/store/apps/details?id=com.v2raytun.android" className={buttonBaseClass}>
+            <Image src="/android-logo.svg" alt="Android" width={20} height={20} className={imageIconClass} />
+            Android TV
           </Link>
         </div>
       </div>
